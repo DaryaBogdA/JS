@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script>
+number = (prompt("Введите число:"));
+const dekitel = [];
+
+for (let i = 1; i <= number; i++) {
+  if (number % i === 0) {
+    dekitel.push(i);
+  }
+}
+console.log("Делители числа: " + dekitel.join(", "));
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script>
+a= prompt('Введите a: ');
+b= prompt('Введите b: ');
+c= prompt('Введите c: ');
+D = b**2 - 4 * a * c;
+if (D > 0){ 
+    x1 = ((-b + Math.sqrt(D)) / (2 * a));
+    x2 = ((-b - Math.sqrt(D)) / (2 * a));
+    console.log("x1 = " + x1);
+    console.log("x2 = " + x2);
+}
+if  (D < 0){
+    console.log("Нельзя найти");
+}
+else { 
+    x1 = (-b + Math.sqrt(D)) / (2 * a);
+    console.log("x1 = " + x1);
+}
+
+
+</script>
+</body>
+</html>
