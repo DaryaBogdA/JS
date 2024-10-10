@@ -5,10 +5,13 @@
 <title></title>
 </head>
 <body>
+  <input id="elem1" type="text" name="a" placeholder="a">
+  <input id="elem2" type="text" name="b" placeholder="b">
+  <input id="butt" type="button" value="Кнопка"/><br><br>
 <script>
-a = (prompt("Введите число:"));
-b = (prompt("Введите число:"));
-
+   butt.onclick = function() {
+		let a = document.getElementById('elem1').value;
+    let b = document.getElementById('elem2').value;
 while (b !== 0) {
   let temp = b;
   b = a % b;
@@ -16,7 +19,7 @@ while (b !== 0) {
 }
 
 console.log("Наибольший общий делитель:", a);
-
+  }
 </script>
 </body>
 </html>

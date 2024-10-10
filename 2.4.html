@@ -5,18 +5,23 @@
 <title></title>
 </head>
 <body>
+  <input id="elem1" type="text" name="number" placeholder="number">
+  <input id="butt" type="button" value="Кнопка"/><br><br>
+
 <script>
-number = (prompt("Введите число:"));
-const dekitel = [];
+butt.onclick = function() {
+  let number = document.getElementById('elem1').value;  
+const divisors = [];
 
 for (let i = 1; i <= number; i++) {
-  if (number % i === 0) {
-    dekitel.push(i);
+  if (number % i == 0) {
+    divisors.push(i);
   }
 }
-console.log("Делители числа: " + dekitel.join(", "));
 
 
+console.log(`Делители числа` + divisors.join(", "));
+}
 </script>
 </body>
 </html>

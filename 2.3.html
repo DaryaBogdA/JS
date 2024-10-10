@@ -5,19 +5,23 @@
 <title></title>
 </head>
 <body>
+
+  <input id="elem1" type="text" name="number" placeholder="number">
+  <input id="butt" type="button" value="Кнопка"/><br><br>
 <script>
-number = pprompt("Введите число:");
+butt.onclick = function() {
+  let number = document.getElementById('elem1').value;
+  
 const divisors = [];
 
 for (let i = 1; i <= number; i++) {
-  if (number % i === 0) {
+  if (number % i == 0) {
     divisors.push(i);
   }
 }
 
-console.log(`Делители числа ${number}: ${divisors.join(", ")}`);
-
-console.log("Площадь равна111:" + s);
+console.log(`Делители числа` + divisors.join(", "));
+}
 </script>
 </body>
 </html> 

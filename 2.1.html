@@ -5,25 +5,31 @@
 <title></title>
 </head>
 <body>
+    <input id="elem1" type="text" name="a" placeholder="a">
+    <input id="elem2" type="text" name="b" placeholder="b">
+    <input id="elem3" type="text" name="c" placeholder="c">
+    <input id="butt" type="button" value="Кнопка"/><br><br>
+
 <script>
-a= prompt('Введите a: ');
-b= prompt('Введите b: ');
-c= prompt('Введите c: ');
-D = b**2 - 4 * a * c;
+    butt.onclick = function() {
+		let a = document.getElementById('elem1').value;
+        let b = document.getElementById('elem2').value;
+        let c = document.getElementById('elem3').value;
+        D = b**2 - 4 * a * c;
 if (D > 0){ 
     x1 = ((-b + Math.sqrt(D)) / (2 * a));
     x2 = ((-b - Math.sqrt(D)) / (2 * a));
-    console.log("x1 = " + x1);
-    console.log("x2 = " + x2);
+    alert("x1 = " + x1 + ", x2 = " + x2);
+    
 }
 if  (D < 0){
-    console.log("Нельзя найти");
+    alert("Нельзя найти");
 }
 else { 
     x1 = (-b + Math.sqrt(D)) / (2 * a);
-    console.log("x1 = " + x1);
+    alert("x1 = " + x1);
 }
-
+};
 
 </script>
 </body>
