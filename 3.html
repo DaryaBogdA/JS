@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+  <input id="elem1" type="text" name="a" placeholder="a">
+  <input id="butt" type="button" value="Кнопка"/><br><br>
+<script> 
+butt.onclick = function() {
+  let a = document.getElementById('elem1').value;
+
+let random = Math.floor(Math.random() * 100) + 1;
+if (a == random) {
+      alert('Поздравляем! Вы угадали число');
+    } else if (a < random) {
+      alert("Введите число побольше!");
+    } else {
+      alert("Введите число поменьше!");
+    }
+}
+</script>
+</body>
+</html>
