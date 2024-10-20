@@ -5,23 +5,25 @@
 <title></title>
 </head>
 <body>
+
   <input id="elem1" type="text" name="number" placeholder="number">
-  <input id="butt" type="button" value="Кнопка"/><br><br>
-
+  <input id="elem2" type="text" name="number" placeholder="number">
+  <input id="butt" type="button" value="Кнопка"/><br><br> 
 <script>
-butt.onclick = function() {
-  let number = document.getElementById('elem1').value;  
-const divisors = [];
+  butt.onclick = function() {
+let num1 = document.getElementById('elem1').value;
+let num2 = document.getElementById('elem2').value;
+let divisors = [];
+let smallerNum = Math.min(num1, num2);
 
-for (let i = 1; i <= number; i++) {
-  if (number % i == 0) {
+for (let i = 1; i <= smallerNum; i++) {
+  if (num1 % i === 0 && num2 % i === 0) {
     divisors.push(i);
   }
 }
 
-
-console.log(`Делители числа` + divisors.join(", "));
-}
+console.log(`Общие делители ${num1} и ${num2}: ${divisors.join(", ")}`);
+  }
 </script>
 </body>
-</html>
+</html> 
