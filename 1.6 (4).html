@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+ 
+<script> 
+let arr = [];
+let sum = 0;
+for(let i = 0; i < 10; i++) {
+    arr[i] = Number(prompt('Введите числа: '));
+    
+}
+for(let j = 0; j < 10; j++) {
+    if (arr[j] > 0 && arr[j] < 10){
+        sum += arr[j]
+    }
+    else {
+        continue
+    } 
+}
+alert(arr); 
+alert(sum); 
+
+
+</script>
+</body>  
+</html>

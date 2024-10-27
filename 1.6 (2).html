@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script> 
+let arr = [1, 2, 3, 4, 5];
+let sum = 0;
+let newarr = [];
+for(let i = 0; i < arr.length; i++) {
+  arr[i] **= 2;
+  newarr.push(arr[i]);
+
+}
+for (let j = 0; j < newarr.length; j++) {
+  sum += newarr[j];
+}
+
+alert(newarr); 
+alert(sum); 
+
+</script>
+</body>
+</html> 
