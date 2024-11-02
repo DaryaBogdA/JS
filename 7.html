@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+  
+<script> 
+function zad1_10_1 (){
+let arr = [];
+for (let i = 0; i < 20; i++ ) {
+    let a = Math.round( Math.random() * 100 );
+    arr.push(a);
+}
+console.log(arr);
+}
+
+function zad1_10_3 (){
+let arr = [1, 2, 3, 4, 5, 6];
+for (let i = 0; i < arr.length; i += 2) {
+  const arr2 = [arr[i], arr[i + 1]];
+  console.log(arr2);
+}
+}
+
+function zad2_1_1 (){
+  let x = prompt('Введите строку: ');
+for (let i = 0; i < x.length; i ++) {
+  if (x[i] == 0) {
+    console.log(i);
+  }
+}
+}
+
+function zad2_1_3 (){
+let arr = [1, 2, 3, 4, 5, 6, 3, 8, 3, 9];
+let delet = 3;
+let arr2 = [];
+for (let i = 0; i < arr.length; i ++) {
+  if (arr[i] !== delet){
+    arr2.push(arr[i]);
+  }
+}
+console.log(arr2);
+}
+
+function zad2_2_1 (){
+let arr = [1, -2, 3, 4, 5, -6, 3, -8, 3, 9];
+let count = 0;
+for (let i = 0; i < arr.length; i ++) {
+  if (arr[i] < 0) count++;
+}
+console.log(count);
+}
+
+function zad2_2_3 (){
+  let x = prompt('Введите строку: ');
+  x = x.substring(0, x.length - 2) + x.substring(x.length - 1); 
+  console.log(x);
+}
+
+function zad2_4_1 (){
+  let x = prompt('Введите строку: ');
+for (let i = 0; i < x.length; i ++) {
+  if (x[i] >= '0' && x[i] <= '9') {
+    console.log(i);
+    break;
+  }
+}
+}
+
+function zad2_4_3 (){
+  let x = 123456789;
+  let count = 0;
+  x = String(x);
+for (let i = 0; i < x.length; i ++) {
+  if (x[i] % 2 == 0) {
+    count++;
+  }
+}
+console.log(count);
+}
+
+function zad2_4_5 (){
+  let x = 'aaa bbb ccc';
+  x = x.split(' ');
+for (let i = 0; i < x.length; i ++) {
+  x[i] = x[i].charAt(0).toUpperCase() + x[i].slice(1);
+
+}
+x = x.join(' ');
+console.log(x);
+}
+
+function zad2_5_1 (){
+  let x = '023m0df0dfg0';
+  let mas = [];
+for (let i = 0; i < x.length; i ++) {
+  if (x[i] == '0') {
+    mas.push(i);
+  }
+}
+console.log(mas);
+}
+
+function zad2_5_3 (){
+  let x = [1, 2, 3, 4, 5, 6, 3];
+  let sumCH = 0;
+  let sumneCH = 0;
+  let rez = 0;
+for (let i = 1; i < x.length; i += 2) {
+  sumCH += x[i];
+}
+for (let i = 0; i < x.length; i += 2) {
+  sumneCH += x[i];
+}
+console.log(rez = sumCH / sumneCH);
+}
+
+
+//zad1_10_1 ()
+//zad1_10_3 ()
+//zad2_1_1 ()
+//zad2_1_3 ()
+//zad2_2_1 ()
+//zad2_2_3 ()
+//zad2_4_1 ()
+//zad2_4_3 ()
+//zad2_4_5 ()
+zad2_5_3 ()
+</script>
+</body>
+</html>
