@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+ 
+<script> 
+function exercise2_6_2 (arr){
+  for (let i = 0; i < arr.length; i++) {
+  arr[i] = Number(arr[i].toString().split("").reverse().join(""));
+
+  }
+  console.log(arr);
+}
+
+
+function exercise2_6_4 (l){
+  let rez = '';
+  for (let i = 0; i < l.length; i++) {
+    if (l[i] === l[i].toUpperCase()){
+      rez += l[i].toLowerCase()
+    }
+    else{
+      rez += l[i].toUpperCase()
+    } 
+  }
+  console.log(rez);
+}
+
+
+function exercise2_6_6 (l){
+  let str = l.split(" ");
+  for (let i = 1; i < str.length; i+=2) {
+    str[i] = str[i][0].toUpperCase() + str[i].slice(1);
+  }
+  l = str.join(" ");
+  console.log(l);
+}
+
+
+// exercise2_6_2([123, 456, 789])
+// exercise2_6_4('AbCdE')
+// exercise2_6_6('aaa bbb ccc eee fff')
+
+function exercise2_7_2(l){
+  if (l == l.toUpperCase()){
+    console.log("в верхнем регистре");
+  }else{
+    console.log("в нижнем регистре");
+  }
+}
+
+// exercise2_7_2("п")
+
+
+
+function exercise2_8_2(str){
+let rez = "";
+for (let i = 0; i < str.length; i ++) {
+  if (str[i] < 4) rez += str[i];
+}
+console.log(rez);
+}
+
+
+// exercise2_8_2('1 22 333 4444 22 5555 1')
+
+
+
+function exercise2_9_2 (arr){
+  arr.reverse()
+  console.log(arr);
+}
+
+
+// exercise2_9_2([1, 2, 3, 4, 5])
+
+
+
+function exercise2_10_2 (num){
+  num = num.toString().split('').reverse().join('');
+  for (let i = 0; i < num.length; i++){
+    let j = Number(num[i]);
+    if (j % 2 == 0){
+      console.log(j);
+      break;
+    }
+  }
+}
+
+function exercise2_10_4 (arr){
+  // let arr = [1, 2, 3, 3, 4, 5];
+  for (let i = 0; i < arr.length; i ++) {
+    if (arr[i] == arr[i + 1]) {
+      console.log("yes");
+    }
+  }
+
+}
+
+
+
+// exercise2_10_2(135678913)
+// exercise2_10_4([1, 2, 3, 3, 4, 5])
+
+</script>
+</body>  
+</html>
