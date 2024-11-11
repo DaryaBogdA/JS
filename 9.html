@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+<script> 
+function exercise3_1_2 (num){
+    num = String(num)
+    let a = true;
+    for (let i = 0; i < num.length - 1; i++) {
+         if (Number(num[i])  >= Number(num[i+1])){
+            a = false;
+            break;
+        }
+    }
+    if (a){
+        console.log("yes");
+        
+    }else{
+        console.log("no");
+
+    }
+
+}
+
+
+function exercise3_1_4 (){
+    let arr1 = [1, 2, 3];
+    let arr2 = [1, 2, 3, 4, 5];
+    arr2.length = 3
+console.log(arr1, arr2);
+}           
+
+
+// exercise3_1_2([1, '', 2, 3, '', 5])
+// exercise3_1_4()
+
+function exercise3_2_2(l){
+    let arr = [];
+    for (let i = 0; i < l.length; i++) {
+        if ((i + 1) % 5 !== 0) {
+            arr.push(l[i]);
+  }
+}
+console.log(arr);
+}
+
+
+
+function exercise3_2_4(l){
+    l = l.split(" ");
+    let str = "";
+    for (let i = 0; i < l.length; i+=2) {
+        str += l[i] + " ";
+  }
+console.log(str);
+}
+
+
+// exercise3_2_2([1, 2, 3, 4, 5, 1, 2, 3, 4, 5])
+// exercise3_2_4('aaa bbb ccc eee fff')
+
+
+
+function exercise3_3_2(num){
+num = String(num);
+let rez = true;
+for (let i = 0; i < num.length; i++) {
+  if (Number(num[i]) % 2 != 0);
+  else rez = false;
+}
+console.log(rez);
+}
+
+
+function exercise3_3_4(){
+let arr = [
+	[
+		[11, 12, 13],
+		[14, 15, 16],
+		[17, 17, 19],
+	],
+	[
+		[21, 22, 23],
+		[24, 25, 26],
+		[27, 27, 29],
+	],
+	[
+		[31, 32, 33],
+		[34, 35, 36],
+		[37, 37, 39],
+	],
+];
+let summa = 0;
+for (let i = 0; i < arr.length; i++) {
+  for (let j = 0; j < arr[i].length; j++) {
+    for (let l = 0; l < arr[i][j].length; l++) {
+      summa += arr[i][j][l];
+    }
+  }
+}
+
+console.log(summa)
+}
+
+
+
+// exercise3_3_2(1357)
+// exercise3_3_4()
+
+
+
+
+
+function exercise3_4_2 (arr){
+    for (let i = 0; i < arr.length; i +=2) {
+    if (i + 1 < arr.length) {
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+    }
+  }
+  console.log(arr);
+}
+
+
+
+
+// exercise3_4_2([1, 2, 3, 4, 5, 6])
+
+
+
+
+function exercise3_5_2 (arr){
+    mas =[];
+    for (let i = 0; i < arr.length; i ++) {
+    if (arr[i] % 5 == 0) {
+        mas.push(arr[i]);
+    }
+  }
+  console.log(mas);
+}
+
+function exercise3_5_4 (arr){
+
+    let rez = true;
+    for (let i = 0; i < arr.length; i++) {
+    let str = arr[i].toString();
+        if (str.includes('3')) {
+            rez = true;
+             break;
+        } else rez = false;
+    }
+
+    if (rez) {
+    console.log("yes");
+    } else {
+    console.log("no");
+    }
+
+}
+
+
+
+function exercise3_5_6 (){
+    let str = "";
+
+    for (let i = 1; i <= 5; i++) {
+        str += '-' + i;
+    }
+    str += '-';
+    console.log(str);
+}
+
+// exercise3_5_2([1, 2, 3, 4, 5, 6, 25 , 3, 30])
+// exercise3_5_4([12, 34, 56, 78, 90, 33])
+// exercise3_5_6()
+
+
+
+
+</script>
+</body>
+</html>
