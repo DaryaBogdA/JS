@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+
+<script> 
+function exercise4_1_2 (num){
+    
+  
+}
+
+
+function exercise4_1_4 (num, l){
+    l = l.slice(0, num);
+    console.log(l);
+
+}           
+
+
+function exercise4_1_6 (num){
+    let summa = 0;
+    let array = [];
+    for (let i = 0; i <= num; i++){
+      if (num % i == 0){
+        array.push(i);
+      }
+    }
+    // console.log(array)
+    for (let i = 0; i < array.length; i++){
+      summa += array[i];
+    }
+    return summa;
+}           
+// exercise4_1_2(хз как делать)
+// exercise4_1_4(5, "asdfertyu")
+// console.log(exercise4_1_6(6))
+
+
+
+function exercise4_3_2(l){
+  
+  let result = [];
+  for (let i = 0; i < l.length; i++){
+    let count = 0;
+    for (let j = 0; j < l.length; j++){
+      if(l[i] == l[j]){
+        count++
+      }
+    }
+    if (count < 3){
+      result.push(l[i])
+    }
+  }
+  return result;
+}
+
+
+
+function exercise4_3_4(array){
+  let min = 0, max = 0;
+  let obj = {};
+  for (let i = 0; i <=array.length; i++){
+    if (array[i] > max) max = array[i];
+    if (array[i] < min) min = array[i];
+  }
+  obj.max = max;
+  obj.min = min;
+  return obj;
+}
+
+
+// console.log(exercise4_3_2([1, 2, 3, 1, 4, 5, 5, 1, 2, 3, 4, 5]))
+// console.log(exercise4_3_4([1, -52, -3, 1, -4, 5, 15, 1, 72, 3, 54, 5]))
+
+
+
+function exercise4_5_2(num){
+  for (let i = 0; i < num.length; i++) {
+    if (!('0' <= num[i] && num[i] <= '9')) {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+function exercise4_5_4(num1, num2){
+  let arr = [];
+  for (let i = num1; i <= num2; i++) {
+    arr.push(i);
+  }
+  return arr;
+}
+
+
+function exercise4_5_6(N){
+  let a = 0, b = 1;
+  let c;
+  let summa = 0;
+  for (let i = 0; i < N; i++) {
+    c = a + b;
+    summa += c;
+    a = b;
+    b = c;
+  }
+  return summa;
+}
+// console.log(exercise4_5_2("1357"))
+// console.log(exercise4_5_4(1, 76))
+// console.log(exercise4_5_6(7))
+
+
+
+
+
+
+function exercise4_7_2 (arr1, arr2){
+  let result_arr = [];
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr1[i] == arr2[j]) {
+        result_arr.push(arr1[i]);
+      }
+    }
+  }
+  return result_arr;
+}
+
+
+function exercise4_7_4 (arr, num){
+  for (let i = 0; i < arr.length; i++) {
+      if (arr[i] == num) {
+        return arr[i + 1];
+        // break;
+      }
+  }
+}
+
+// console.log(exercise4_7_2([1, 2, 3, 4, 5], [1, 2, 5, 6, 7]))
+// console.log(exercise4_7_4([1, 2, 3, 4, 5, 6, 7], 5))
+
+
+
+
+function exercise4_9_2 (arr){
+    let rez = "я хз"
+
+}
+
+
+
+function exercise4_9_4(arr){
+    let new_arr = [];
+
+    let max = Math.max(...arr);
+    for (let i = 1; i <= max; i++) {
+      let result = true;
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j] % i != 0) {
+          result = false;
+
+        }
+      }
+      if (result) new_arr.push(i);
+    }
+    return new_arr;
+}
+
+// console.log(exercise4_9_2())
+// console.log(exercise4_9_4([12, 6, 24]))
+
+
+
+
+
+</script>
+</body>
+</html>
