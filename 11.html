@@ -7,33 +7,61 @@
 <body>
     <input id="elem1">
     <input id="elem2">
-    <input id="butt" type="button" value="5.1.1 и 5.2.2"/><br><br>
+    <input id="butt" type="button" value="5.1.1"/><br><br>
+
+    <input id="elem3">
     <input id="butt2" type="button" value="5.1.4"/><br><br>
-    <input id="butt3" type="button" value="5.2.4"/><br><br>
-    <input id="butt4" type="button" value="5.3.2"/><br><br>
+
+    <input id="elem5">
+    <input id="elem6">
+    <input id="butt3" type="button" value="5.2.2"/><br><br>
+
+    <input id="elem4" placeholder="Введите строку">
+    <input id="butt4" type="button" value="5.2.4"/><br><br>
+
+    <input id="elem7">
+    <input id="elem8">
+    <input id="butt5" type="button" value="5.3.2"/><br><br>
 
 <script> 
 
 butt.onclick = function() {
     let a = document.getElementById('elem1').value;
     let b = document.getElementById('elem2').value;
-    document.write(Number(a) + Number(b))
+    let div = document.createElement("div");
+    div.innerHTML = Number(a) + Number(b)
+    document.body.append(div);
 }
 
 butt2.onclick = function() {
-    let a = document.getElementById('elem1').value;
-    document.write(a * a)
+    let a = document.getElementById('elem3').value;
+    let div = document.createElement("div");
+    div.innerHTML = a * a;
+    document.body.append(div);
 }
 
 butt3.onclick = function() {
-    let a = document.getElementById('elem1').value;
-    document.write(a.length)
+    let a = document.getElementById('elem5').value;
+    let b = document.getElementById('elem6').value;
+    let div = document.createElement("div");
+    div.innerHTML = Number(a) * Number(b);
+    document.body.append(div);
 }
 
 butt4.onclick = function() {
-    let a = document.getElementById('elem1').value;
-    let b = document.getElementById('elem2').value;
-    a > b ? document.write(a) : document.write(b)
+    let a = document.getElementById('elem4').value;
+    let div = document.createElement("div");
+    div.innerHTML = a.length;
+    document.body.append(div);
+}
+
+butt5.onclick = function() {
+    let a = document.getElementById('elem7').value;
+    let b = document.getElementById('elem8').value;
+    let div = document.createElement("div");
+    a > b ? div.innerHTML = a : div.innerHTML = b;
+    document.body.append(div);
+    
 }
 </script>
 </body>  
