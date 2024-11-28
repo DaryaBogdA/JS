@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+    <input id="elem1">
+    <input id="elem2">
+    <input id="butt" type="button" value="5.1.1 и 5.2.2"/><br><br>
+    <input id="butt2" type="button" value="5.1.4"/><br><br>
+    <input id="butt3" type="button" value="5.2.4"/><br><br>
+    <input id="butt4" type="button" value="5.3.2"/><br><br>
+
+<script> 
+
+butt.onclick = function() {
+    let a = document.getElementById('elem1').value;
+    let b = document.getElementById('elem2').value;
+    document.write(Number(a) + Number(b))
+}
+
+butt2.onclick = function() {
+    let a = document.getElementById('elem1').value;
+    document.write(a * a)
+}
+
+butt3.onclick = function() {
+    let a = document.getElementById('elem1').value;
+    document.write(a.length)
+}
+
+butt4.onclick = function() {
+    let a = document.getElementById('elem1').value;
+    let b = document.getElementById('elem2').value;
+    a > b ? document.write(a) : document.write(b)
+}
+</script>
+</body>  
+</html>
