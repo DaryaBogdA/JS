@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    li {
+      background-color: #cf7474;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .button1 {
+        background-color: #af74cf;
+    }
+    .button2 {
+        background-color: #74aecf;
+    }
+    .button3 {
+        background-color: #ff0008;
+    }
+    table {
+        background-color: green;
+    }
+
+    td {
+        border: 1px solid black;
+        padding: 15px;
+    }
+  </style>
+</head>
+<body>
+    <input class = "button1" id="butt" type="button" value="Заполнить список (6.1.1)"/><br><br>
+    <input class = "button2" id="butt2" type="button" value="Заполнить порядком (6.1.4)"/><br><br>
+    <input class = "button3" id="butt3" type="button" value="Удалить последнее (6.1.5)"/><br><br>
+    <ul id = "ul"></ul>
+
+    <input id="elem1" value="Ширина">
+    <input id="elem2" value="Высота">
+    <input class = "button4" id="butt4" type="button" value="Создать таблицу (6.2.1)"/><br><br>
+    <table id = "table"></table>
+
+    <input class = "button5" id="butt5" type="button" value="Поменять цвет абзаца (6.3.1)"/><br><br>
+    <p id = "p">!!!!Погнали!!!!</p>
+
+    <input class = "button6" id="butt6" type="button" value="+1 (6.3.4)"/><br><br>
+    <div id = "div">0</div>
+
+<script> 
+    butt.onclick = function() {
+        let ul = document.querySelector("ul");
+        let arr = ["Э", "fghd", 3, 4, 5, 6, 7, 8];
+        for (let i = 0; i < arr.length; i++){
+            let li = document.createElement("li");
+            li.textContent = arr[i];
+            ul.appendChild(li);
+        }
+    }
+    let f = 0; 
+    butt2.onclick = function() {
+        let ul = document.querySelector("ul");
+        f++;      
+        let li = document.createElement("li");
+        li.textContent = f;
+        ul.appendChild(li);
+    }
+    butt3.onclick = function() {
+        let lastChild = ul.lastElementChild;
+        if (lastChild) {
+        ul.removeChild(lastChild);
+        }
+    }
+    butt4.onclick = function() {
+        let height = Number(document.getElementById('elem1').value);
+        let weight = Number(document.getElementById('elem2').value);
+        let table = document.getElementById('table');
+        for (let i = 0; i < weight; i++) {
+        const tr = document.createElement('tr');
+        for (let j = 0; j < height; j++) {
+          let td = document.createElement('td');
+          tr.appendChild(td);
+        }
+        table.appendChild(tr);
+      }
+    }
+    let count = 0;
+    butt5.onclick = function() {
+        let num = document.getElementById('p');
+        if (count == 0) {
+        p.style.color = 'red';
+        count++;
+      } else if (count == 1) {
+        p.style.color = 'green';
+        count++;
+      } else {
+        p.style.color = 'black';
+        count = 0;
+      }
+    }
+    let count2 = 1;
+    butt6.onclick = function() {
+        div.textContent = count2;
+        count2++;
+    }
+</script>
+</body>  
+</html>
