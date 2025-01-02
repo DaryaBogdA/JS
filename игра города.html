@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #c79ec1;
+}
+li {
+  background: #b700db;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+input {
+  width: 200px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#message {
+  color: rgb(31, 2, 68);
+  font-size: 1.5rem;
+}
+
+#cities {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div>
+      <input id="field">
+      <div id="message"></div>
+      <ul id="cities"></ul>
+    </div>
+  </div>
+<script> 
+  let field   = document.querySelector('#field');
+  let message = document.querySelector('#message');
+  let citiesContainer = document.querySelector('#cities');
+  let cities = [];
+  document.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    let city = field.value.toLowerCase();
+    if (cities.length === 0) {
+      cities.push(city);
+      message.innerHTML = 'Первый город добавлен';
+      citiesContainer.innerHTML += `<li> ${city} </li>`;
+
+    } else {
+      if (city[0] === cities[cities.length - 1][cities[cities.length - 1].length - 1] && !cities.includes(city)) {
+        cities.push(city);
+        message.innerHTML = 'Город добавлен';
+        citiesContainer.innerHTML += `<li> ${city} </li>`;
+      } else {
+        message.innerHTML = 'Неверный город';
+      }
+    }
+    field.value = '';
+  }
+});
+
+</script>
+</body>
+</html>
