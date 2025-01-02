@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+  table {
+        background-color: green;
+    }
+
+    td {
+        border: 1px solid black;
+        padding: 15px;
+    }
+</style>
+</head>
+<body>
+  <input id="elem5">
+  <input id="elem6">
+  <input id="butt5_2_2" type="button" value="5.2.2"/><br><br>
+  <p id = "p5_2_2"></p>
+
+  <input id="elem1">
+  <input id="butt5_2_4" type="button" value="5.2.4"/><br><br>
+  <p id = "p5_2_4"></p>
+
+  <input id="elem2" value="ширина">
+  <input id="elem3" value="высота">
+  <input id="butt6_2_2" type="button" value="6.2.2"/><br><br>
+  <table id = "table"></table>
+
+  <input id="butt6_2_4" type="button" value="6.2.4"/><br><br>
+  <table id = "table6_2_4"></table>
+<script> 
+
+function exercise4_2_2 (num){
+    num = String(num)
+    str = '';
+    for (let i = 0; i < num.length; i++) {
+         if (num[i] != 0){
+           str += num[i]
+        }
+    }
+    str = Number(str)
+    console.log(str);
+  
+}
+
+
+function exercise4_2_4 (year){
+  if (year % 4 !== 0) {
+    return false;
+  }
+  return true;
+}          
+
+function exercise4_2_6 (){
+  now = new Date();
+  days_in_month = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+  day = days_in_month - now.getDate()
+  console.log(day);
+}
+// exercise4_2_2(234600875057)
+// console.log(exercise4_2_4(2022))
+// exercise4_2_6()
+
+
+butt5_2_2.onclick = function() {
+    let a = document.getElementById('elem5').value;
+    let b = document.getElementById('elem6').value;
+    let p = document.getElementById("p5_2_2");
+    p.innerHTML = Number(a) * Number(b);
+}
+
+butt5_2_4.onclick = function() {
+    let a = document.getElementById('elem1').value;
+    let p = document.getElementById("p5_2_4");
+    p.innerHTML = a.length;
+}
+
+
+butt6_2_2.onclick = function() {
+    let table = document.getElementById("table");
+    let a = Number(document.getElementById('elem2').value);
+    let b = Number(document.getElementById('elem3').value);
+    let count = 1;
+    for (let i = 0; i < b; i++){
+      let tr = document.createElement("tr");
+      for (let j = 0; j < a; j++){
+        let td = document.createElement("td");
+        td.textContent = count;
+        tr.appendChild(td);
+        count++;
+      }
+      table.appendChild(tr);
+    }
+}
+
+butt6_2_4.onclick = function() {
+    let table = document.getElementById("table6_2_4");
+    let arr = [
+                [1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9],
+              ];
+    for (let i = 0; i < arr.length; i++){
+      let tr = document.createElement("tr");
+      for (let j = 0; j < arr[i].length; j++){
+        let td = document.createElement("td");
+        td.textContent = arr[i][j];
+        tr.appendChild(td);
+      }
+      table.appendChild(tr);
+    }
+}
+</script>
+</body>
+</html>
