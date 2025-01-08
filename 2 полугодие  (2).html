@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+  <a href="https://www.google.com">Goggle</a>
+  <a href="https://www.instagram.com/">Instagram</a>
+  <a href="https://www.facebook.com">Facebook</a>
+  <a href="https://www.twitter.com">Twitter</a>
+  <input id="butt5_4_2" type="button" value="5.4.2"/><br><br>
+  <p id="p5_4_2"></p>
+  
+  <p id="year"></p>
+  <p id="mounth"></p>
+  <p id="day"></p>
+
+  <input id="input6_4_2" value="6.4.2"/>
+  <ul id="ul6_4_2"></ul>
+
+  <input id="input6_4_4" value="6.4.4"/>
+  <ul id="ul6_4_4"></ul>
+<script> 
+function exercise4_4_3(num){
+    arr = [];
+    for (let i = 1; i <= num; i++) {
+         if (num % i == 0){
+           arr.push(i)
+        }
+    }
+    console.log(arr);
+  
+}
+
+
+function exercise4_4_4(num){
+    let result = true
+    for (let i = 2; i < num; i++){
+      if (num % i == 0){
+        result = false
+      }
+    }
+    console.log(result)
+}           
+
+
+function exercise4_4_6(min, max, n){
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+      arr[i] = Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    console.log(arr);
+}           
+
+// exercise4_4_3(12)
+// exercise4_4_4(31)
+// exercise4_4_6(1, 94, 10)
+
+
+
+
+butt5_4_2.onclick = function() {
+    let a = document.querySelectorAll('a');
+    let p = document.getElementById("p5_4_2");
+    let hrefs = []
+    for (let i of a){
+      hrefs.push(i.getAttribute('href'))
+    }
+    p.innerHTML = hrefs.join('<br>');
+}
+
+let year = document.getElementById("year");
+let mounth = document.getElementById("mounth");
+let day = document.getElementById("day");
+
+let now = new Date();
+
+year.innerHTML = now.getFullYear()
+mounth.innerHTML = now.getMonth() + 1
+day.innerHTML = now.getDate()
+
+input6_4_2.onmouseout = function(){
+  let ul = document.getElementById("ul6_4_2");
+  let text =  document.getElementById("input6_4_2").value;
+  let li = document.createElement("li");
+        li.textContent = text;
+        ul.appendChild(li);
+}
+
+document.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    let year =  document.getElementById("input6_4_4").value;
+    let ul = document.getElementById("ul6_4_4");
+    
+    let li = document.createElement("li");
+        li.textContent = get_friday_13(year);;
+        ul.appendChild(li);
+
+
+    function get_friday_13(year) {
+    let dates = [];
+    for (let month = 0; month < 12; month++) {
+      for (let day = 1; day <= 31; day++) {
+        let date = new Date(year, month, day);
+        if (date.getDay() === 5 && date.getDate() === 13) {
+          dates.push(date);
+        }
+      }
+    }
+    return dates;
+  }
+  }
+});
+</script>
+</body>
+</html>
