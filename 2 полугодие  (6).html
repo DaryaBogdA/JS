@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<script> 
+
+function random_number(start, end, N){
+  let arr = new Set()
+  while(arr.size < N){
+    arr.add(Math.floor(Math.random() * (end - start + 1)) + start)
+  }
+  arr = Array.from(arr);
+  return arr;
+}
+console.log(random_number(3, 20, 9))
+
+
+let arr = [1, 2, 3, 4, 5, 6];
+let num = 3;
+let num_squrt = num * num;
+
+while (arr.length < num_squrt) {
+    arr.push("");
+}
+
+console.log(arr);
+
+function format(date) {
+    let day = date.getDate().toString().padStart(2, '0');
+    let month = (date.getMonth() + 1).toString().padStart(2, '0');
+    let year = date.getFullYear();
+    return `${day}.${month}.${year}`;
+}
+
+for(let year = 2000; year <= 2100; year++){
+  for(let month = 1; month <= 12; month++){
+    for(let day = 1; day <= 31; day++){
+      let date = new Date(year, month - 1, day);
+      if (date.getMonth() + 1 !== month) {
+        continue; 
+      }
+      let result = format(date);
+      if(result.split('2').length - 1 === 4){
+        console.log(result)
+      }
+    }
+  }
+}
+
+
+</script>
+</body>
+</html>

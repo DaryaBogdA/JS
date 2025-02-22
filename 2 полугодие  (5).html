@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+</style>
+</head>
+<body>
+  <ul id="ul7_1_1">
+    <li>11</li>
+    <li>2</li>
+    <li>36</li>
+    <li>4</li>
+    <li>52</li>
+    <li>46</li>
+    <li>7</li>
+    <li>83</li>
+    <li>19</li>
+    <li>40</li>
+  </ul>
+  <input id="butt7_1_1" type="button" value="7.1.1"/><br><br>
+  
+  <input id="input7_1_4">
+  <input id="butt7_1_4" type="button" value="7.1.4"/><br><br>
+  <table id="table7_1_4">
+    <tr>
+      <th>Дата рождения</th>
+      <th>День недели</th>
+    </tr>
+  </table>
+
+
+<script> 
+  let ul = document.getElementById("ul7_1_1");
+
+  butt7_1_1.onclick = function(){
+    let max_number = -Infinity; 
+    let max_li = null;
+    for (let i = 0; i < ul.children.length; i++) {
+      let num = parseInt(ul.children[i].textContent); 
+      if (num > max_number) {
+        max_number = num;
+        max_li = ul.children[i];
+      }
+    }
+    if (max_li) {
+      ul.removeChild(max_li);
+    }
+  }
+
+  butt7_1_4.onclick = function() {
+    let birth_date = new Date(document.getElementById('input7_1_4').value);
+
+    let current_year = new Date().getFullYear();
+    let table = document.getElementById("table7_1_4");
+
+    for (let year = birth_date.getFullYear(); year <= current_year; year++) {
+        let date = new Date(birth_date);
+        date.setFullYear(year);
+
+        let options = { year: 'numeric', month: 'long', day: 'numeric' };
+        let formatted_date = date.toLocaleDateString('ru-RU', options);
+        let day_of_week = date.toLocaleDateString('ru-RU', { weekday: 'long' });
+
+        let new_row = table.insertRow();
+        let date_cell = new_row.insertCell();
+        let day_of_week_cell = new_row.insertCell();
+
+        date_cell.textContent = formatted_date;
+        day_of_week_cell.textContent = day_of_week;
+    }
+};
+
+let arr = [
+  [2, 4, 5],
+  [1, 2, 3],
+  [0, 1, 1],
+  [5, 7, 1],
+];
+
+arr.sort((a, b) => {
+  let sumA = a.reduce((sum, num) => sum + num, 0);
+  let sumB = b.reduce((sum, num) => sum + num, 0); 
+  return sumA - sumB; 
+});
+
+console.log(arr); 
+
+
+let str = 'abcde abcde';
+let del = 'abe';
+
+let regular = new RegExp(`[${del}]`, 'g');
+let result = str.replace(regular, '');
+
+console.log(result);  
+
+</script>
+</body>
+</html>
