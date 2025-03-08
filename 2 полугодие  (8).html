@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+  .table {
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  .table td {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #333;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+  }
+  .red {
+    background-color: red;
+  }
+</style>
+</head>
+<body>
+  <p id="p"></p>
+  <input id="input"></input>
+  <input id="butt8_7_1" type="button" value="8.7.1"/><br><br>
+  <p id="p8_7_1"></p>
+  <p id="p8_7_4"></p>
+
+  <table id="table" class="table">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+
+  <table id="table_2" class="table">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+<script> 
+  let p_1 = document.getElementById("p"); 
+
+let array = [];
+let str = '';
+for (let i = 1; i <= 5; i++) {
+  str += i;
+  array.push(str);
+}
+p_1.textContent = array;
+
+
+
+  function shuffle_str(str) {
+    let arr = str.split('');
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr.join('');
+  }
+  butt8_7_1.onclick = function(){
+    let input = document.getElementById("input").value; 
+    let p = document.getElementById("p8_7_1"); 
+    p.textContent = shuffle_str(input);
+  }
+
+  let p8_7_4 = document.getElementById("p8_7_4"); 
+  function pyramid() {
+  let pyramid = '';
+  for (let i = 9; i >= 1; i--) {
+    for (let j = 0; j < i; j++) {
+      pyramid += i;
+    }
+    pyramid += '\n';
+  }
+  p8_7_4.textContent = pyramid;
+}
+
+pyramid()
+
+let cells = document.querySelectorAll('#table td');
+table.onclick = function(){
+  let cell = event.target;
+  if (cell.tagName === 'TD') {
+    let column = cell.cellIndex;
+    let rows = table.rows;
+    
+    for (let i = 0; i < rows.length; i++) {
+      rows[i].cells[column].classList.toggle('red');
+    }
+}
+}
+
+
+table_2.onclick = function(){
+  let cell = event.target;
+  if (cell.tagName.toLowerCase() === 'td') {
+    let row = cell.parentNode;
+    let cells = row.cells;
+    
+    for (let i = 0; i < cells.length; i++) {
+      cells[i].classList.toggle('red');
+    }
+  }
+}
+</script>
+</body>
+</html>
