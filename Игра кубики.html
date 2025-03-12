@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+table {
+  width: 250px;
+  height: 250px;
+}
+td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+td:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.conteiner {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.buttons-container { 
+  display: flex;
+  justify-content: center;
+  gap: 20px;           
+}
+input[type="button"] { 
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+input[type="button"]:hover {
+  background-color: #ddd;
+}
+p {
+  text-align: center; 
+  font-size: 18px;
+}
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 15, 223);
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+}
+</style>
+</head>
+<body>
+  <div class="conteiner">
+  <table id="table_1">
+    <tr>
+      <td id="1"></td>
+      <td></td>
+      <td id="2"></td>
+    </tr>
+    <tr>
+      <td id="3"></td>
+      <td id="4"></td>
+      <td id="5"></td>
+    </tr>
+    <tr>
+      <td id="6"></td>
+      <td></td>
+      <td id="7"></td>
+    </tr>
+  </table>
+
+  <table id="table_2">
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+<br><br>
+<p style="display: flex;">Кто ходит первый?</p>
+<br><br>
+
+
+<div class="buttons-container" style="display: flex;">
+  <input id="you" type="button" value="Ты"/>
+  <input id="computer" type="button" value="Компьютер"/>
+</div>
+
+<script> 
+class Game{
+  constructor(tableName) {
+    this.tableName = tableName;
+  }
+  block(){
+    const table = document.getElementById(this.tableName);
+    const cells = table.querySelectorAll('td[id]');
+    const numCircles = Math.floor(Math.random() * 6) + 1;
+    let cellIndex = 0;
+for(let j = 0; j < 5; j++){
+    for (let i = 0; i < numCircles; i++) {
+      if (cellIndex < cells.length) {
+        const cell = cells[cellIndex];
+        const circle = document.createElement('div');
+        circle.classList.add('circle');
+        cell.appendChild(circle);
+
+        setTimeout(() => {
+          cell.removeChild(circle); // Удаляем кружок через 1 секунду
+        }, 400);
+
+        cellIndex++;
+      }
+    }
+  }
+}}
+you.onclick = function(){
+  const game = new Game('table_1'); //  Инициализируем игру для table_1
+  game.block();
+}
+</script>
+</body>
+</html>
