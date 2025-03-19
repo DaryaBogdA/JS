@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  margin: 0 auto;
+}
+
+#player, #dealer {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#player-hand, #dealer-hand {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 70px;
+  height: 100px;
+  border: 1px solid black;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+#messages {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<h1>21 очко</h1>
+  <div id="game">
+    <p id="step_player" style="display: flex;">Ходит игрок</p>
+    <p id="step_player" style="display: none;">Ходит компьютер</p>
+    <div id="player">
+      <h2>Игрок</h2>
+      <ul id="all_cards_player"></ul>
+      <p>Счёт: <span id="player_score">0</span></p>
+    </div>
+    <div id="dealer">
+      <h2>Компьютер</h2>
+      <ul id="all_cards_computer"></ul>
+      <p>Счёт: <span id="computer_score">0</span></p>
+    </div>
+    <div id="buttons">
+      <button id="start" style="display: flex;">Старт</button>
+      <button id="more" style="display: none;">Ещё</button>
+      <button id="stops" style="display: none;">Всё</button>
+      <button id="new_game" style="display: none;">Новая игра</button>
+    </div>
+    <div id="messages">
+      <p id="p"></p>
+    </div>
+  </div>
+</body>
+<script>
+let ul_player = document.getElementById("all_cards_player")
+let ul_comp = document.getElementById("all_cards_computer")
+let player_score = document.getElementById("player_score")
+let comp_score = document.getElementById("computer_score")
+class Game{
+  constructor(name){
+    this.name = name;
+  }
+
+  add_card(){
+    let card_name = ['Черви', 'Бубны', 'Крести', 'Пики'];
+    let card_num = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'T'];
+    let random_choise =  Math.floor(Math.random() * card_num.length);
+    random_choise  += " " +  Math.floor(Math.random() * card_name.length);
+    if (name == "player"){
+      let li = document.createElement("li");
+      li.textContent = random_choise;
+      ul_player.appendChild(li);
+    }
+  }
+}
+
+let player = new Game("player");
+let comp = new Game("computer");
+
+function add(person){
+  person.add_card()
+}
+
+start.onclick = function(){
+  more.style.display = "flex"
+  stops.style.display = "flex"
+  start.style.display = "none"
+}
+
+more.onclick = function(){
+  add(player)
+  add(comp)
+}
+
+
+
+</script>
+</html>
