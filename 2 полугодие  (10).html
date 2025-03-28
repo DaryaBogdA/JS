@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+  table {
+      border-collapse: collapse;
+      margin: 20px auto;
+  }
+  td {
+      width: 40px;
+      height: 40px;
+      border: 1px solid black;
+      text-align: center;
+  }
+  button {
+      margin: 20px auto;
+      display: block;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <input id="input_10_3_1" value="input_10_3_1"><br><br>
+
+  <input id="btn10_3_5" type="button" value="10_3_5"><br><br>
+  <p id="password"></p><br><br>
+
+  <input id="input_10_3_71"><br><br>
+  <input id="input_10_3_72"><br><br>
+  <input id="btn10_3_7" type="button" value="input_10_3_7"><br><br>
+  <ul id="ul"></ul> <br><br>
+  <p id="ost"></p><br><br>
+
+  <input id="input_10_3_8"><br><br>
+  <input id="btn10_3_8" type="button" value="input_10_3_8"><br><br>
+  <p id="calc"></p><br><br>
+
+  <table id="table">
+    <tr>
+        <td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td>
+    </tr>
+    <tr>
+        <td></td><td></td><td></td>
+    </tr>
+  </table>
+  <input id="btn10_3_4" type="button" value="input_10_3_4"><br><br>
+
+
+  <table id="table_2">
+
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<input id="btn10_5_6" type="button" value="input_10_5_6"><br><br>
+
+<script> 
+  let input_10_3_1 = document.getElementById("input_10_3_1");
+  let pattern = /[0-9]/;
+  input_10_3_1.addEventListener("keypress", function(event) {
+    if (!pattern.test(event.key)) {
+      event.preventDefault();
+    }
+  });
+
+function rundom(length){
+  let lowercase = "abcdefghijklmnopqrstuvwxyz";
+  let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let number = "0123456789";
+  let symbol = "!@#$%^&*()_-+=";
+  let password = "";
+
+  password += lowercase[Math.floor(Math.random() * lowercase.length)];
+  password += uppercase[Math.floor(Math.random() * uppercase.length)];
+  password += number[Math.floor(Math.random() * number.length)];
+  password += symbol[Math.floor(Math.random() * symbol.length)];
+
+  let all_symbol = lowercase + uppercase + number + symbol;
+  while (password.length < length) {
+    password += all_symbol[Math.floor(Math.random() * all_symbol.length)];
+  }
+
+  password = password.split('').sort(() => 0.5 - Math.random()).join('');
+
+  return password;
+}
+
+btn10_3_5.onclick = function(){
+let password = document.getElementById("password")
+password.innerHTML = rundom(8)
+
+}
+
+btn10_3_7.onclick = function(){
+  let ul = document.getElementById("ul");
+  let num_1 = parseInt(document.getElementById("input_10_3_71").value)
+  let num_2 = parseInt(document.getElementById("input_10_3_72").value)
+  let ost = document.getElementById("ost")
+  ul.innerHTML = '';
+  ost.textContent = 'Остаток: ';
+  
+  let ostatok = num_1
+  while(ostatok >= num_2){
+    let result = Math.floor(ostatok / num_2);
+    let current_result = result * num_2;
+    ostatok = ostatok - current_result;
+    let li = document.createElement("li");
+
+    li.textContent = result;
+    ul.appendChild(li);
+    ost.innerHTML = `Остаток: ${ostatok}`;
+  }
+}
+
+btn10_3_8.onclick = function(){
+  let input_10_3_8 = document.getElementById("input_10_3_8").value
+  let p = document.getElementById("calc")
+  let evaluatedResult = eval(input_10_3_8); 
+  p.textContent = `Результат: ${evaluatedResult}`;
+}
+
+btn10_3_4.onclick = function(){
+  let rows = table.rows; 
+  let size = rows.length;
+
+  for (let i = 0; i < size; i++) {
+      const row = rows[i];
+      row.cells[i].style.backgroundColor = 'red'; 
+      row.cells[size - i - 1].style.backgroundColor = 'green'; 
+  }
+}
+
+btn10_5_6.onclick = function(){
+  let rows = table_2.rows; 
+  let size = rows.length; 
+
+  for (let i = 0; i < size; i++) {
+      const cells = rows[i].cells; 
+      for (let j = 0; j < cells.length; j++) {
+          cells[j].textContent = 5 + j - i; 
+      }
+  }
+}
+
+</script>
+</body>
+</html>

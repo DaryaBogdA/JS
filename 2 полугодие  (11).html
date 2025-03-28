@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+  .click_num {
+    position: absolute;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    pointer-events: none; 
+  }
+  table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    text-align: center;
+  }
+  td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+  td.active {
+    background-color: rgb(255, 44, 55); 
+  }
+
+</style>
+</head>
+<body>
+  <input id="input10_2_4"><br><br>
+  <input id="input10_2_1">
+  <input id="btn10_2_1" type="button" value="btn10_2_1">
+  <p id="p10_2_1"></p>
+
+  <table>
+    <tr>
+      <td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td></td><td></td><td></td>
+    </tr>
+    <tr>
+      <td></td><td></td><td></td>
+    </tr>
+  </table>
+
+  <table id="table_2"></table>
+  <input id="btn10_2_5" type="button" value="btn10_2_5">
+<script> 
+let count = 0;
+
+// document.addEventListener('click', function(event) {
+//   count++; 
+
+//   let click_elem = document.createElement('div'); 
+//   click_elem.textContent = count; 
+//   click_elem.className = 'click_num'; 
+
+//   click_elem.style.left = event.pageX + 'px';
+//   click_elem.style.top = event.pageY + 'px';
+
+//   document.body.appendChild(click_elem); 
+// });
+
+let input = document.getElementById("input10_2_4");
+
+  input.addEventListener("input", function () {
+    let value = input.value.replace(/\s/g, ""); 
+    input.value = value.replace(/(\d)(?=(\d{3})+$)/g, "$1 "); 
+  });
+
+let p10_2_1= document.getElementById("p10_2_1")
+btn10_2_1.onclick = function(){
+  let result;
+  let input10_2_1 = document.getElementById("input10_2_1").value
+  let last_letter = input10_2_1[input10_2_1.length - 1];
+
+  if(last_letter == "o" || last_letter == "x" || last_letter == "ss" || last_letter == "sh" || last_letter == "ch" || last_letter == "s"){
+    result = input10_2_1 + "es"
+  } else if(last_letter == "y"){
+    result = input10_2_1.slice(0, -1) + "ies";
+  } else {
+    result = input10_2_1 + "s"
+  }
+  p10_2_1.innerHTML = result
+}
+
+let table = document.querySelector("table");
+
+  table.addEventListener("click", function(event) {
+    if (event.target.tagName === "TD") { 
+      let all_cell = table.querySelectorAll("td");
+      all_cell.forEach(cell => cell.classList.remove("active"));
+      
+      event.target.classList.add("active");
+    }
+  });
+
+
+  const size = 6; 
+  let table_2 = document.getElementById('table_2');
+
+  for (let i = 0; i < size; i++) {
+    let row = document.createElement('tr');
+    for (let j = 0; j < size; j++) {
+      let cell = document.createElement('td');
+      row.appendChild(cell);
+    }
+    table_2.appendChild(row);
+  }
+
+  btn10_2_5.onclick = function(){
+    let rows = table_2.rows; 
+    for (let i = 0; i < size; i++) {
+      for (let j = 0; j < size - i; j++) {
+        rows[i].cells[j].textContent = '+';
+      }
+    }
+  }
+    
+</script>
+</body>
+</html>

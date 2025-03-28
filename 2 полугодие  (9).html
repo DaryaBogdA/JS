@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+    <p id="text">Ехал грека черещ реку видит грека</p>
+    
+    <input id="butt10_4_1" type="button" value="10.4.1"/><br><br>
+    <input id="number_1"/><br><br>
+    <input id="number_2"/><br><br>
+    <input id="butt10_4_4" type="button" value="10.4.4"/><br><br>
+    <ul id="ul"></ul>
+    <p>Результат </p>  
+    <p id="result"></p>
+   
+    <input id="number_1NOK"/><br><br>
+    <input id="number_2NOK"/><br><br>
+    <input id="butt10_4_3" type="button" value="10.4.3"/><br><br>
+    <ul id="ulNOK"></ul>
+
+
+
+    <input id="butt10_6_4" type="button" value="10.6.4"/><br><br>
+    <ul id="ul10_6_4"></ul>
+
+    <input id="input10_6_1"/><br><br>
+    <input id="butt10_6_1" type="button" value="10.6.1"/><br><br>
+    <p id="p10_6_1">Какого я могу быть цвета?</p>
+
+<script> 
+butt10_4_1.onclick = function(){
+    let text_1 = document.getElementById("text");
+    text = text_1.textContent
+    let word = text.split(/\s+/);
+    word.sort(() => Math.random() - 0.5);
+    text_1.textContent = word.join(" ");
+}
+butt10_4_4.onclick = function(){
+    let number_1 = document.getElementById("number_1").value;
+    let number_2 = document.getElementById("number_2").value;
+    let ul = document.getElementById("ul");
+    let result = document.getElementById("result");
+
+    let max = Math.max(number_1, number_2);
+    let min = Math.min(number_1, number_2);
+    for(let i =0; i <= min; i++){
+        if(max % i === 0 && min % i == 0){
+            let li = document.createElement("li");
+            li.textContent = i;
+            ul.appendChild(li);
+            result.textContent = i;
+        }
+    }
+}
+
+butt10_4_3.onclick = function(){
+    let number_1 = document.getElementById("number_1NOK").value;
+    let number_2 = document.getElementById("number_2NOK").value;
+    let ul = document.getElementById("ulNOK");
+    let result = document.getElementById("result_NOK");
+
+    let max = Math.max(number_1, number_2);
+    let min = Math.min(number_1, number_2);
+    let i = max;
+    while(1){
+        if(i % max === 0 && i % min == 0){
+            ul.innerHTML = '';
+            let li = document.createElement("li");
+            li.textContent = i;
+            ul.appendChild(li);
+            break;
+        }
+        i++
+    }
+}
+
+function check(num) {
+  return num % 1 === 0;
+}
+
+butt10_6_4.onclick = function(){
+    ul.innerHTML = '';
+    for(let a = 1; a < 10; a++){
+        for(let b = 0; b < 10; b++){
+            for(let c = 0; c < 10; c++){
+                let D = b * b - 4 * a * c
+                if(D >= 0){
+                    let x_1 = (-b + Math.sqrt(D)) / (2 * a)
+                    let x_2 = (-b - Math.sqrt(D)) / (2 * a)
+                    if(check(x_1) && check(x_2)){
+                        let li = document.createElement("li");
+                        li.textContent = a + "x^2 + " + b + "x + " + c ;
+                        ul.appendChild(li);
+                }
+                }
+                
+            }
+        }
+    }
+}
+
+butt10_6_1.onclick = function(){
+    let input = document.getElementById("input10_6_1").value;
+    let p = document.getElementById("p10_6_1");
+    p.style.color = input;
+}
+
+</script>
+</body>
+</html>
