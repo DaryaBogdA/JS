@@ -1,21 +1,215 @@
 <!DOCTYPE html>
 <html lang="ru" >
 <head>
-<meta charset="utf-8">
-<title></title>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        #parent {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+
+        #calendar {
+            display: inline-block;
+            border: 2px solid #0d0053;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background-color: #f9f9f9;
+        }
+
+        #calendar td, #calendar th {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        #calendar th {
+            background-color: #2c0079;
+            color: white;
+            font-weight: bold;
+        }
+
+        #calendar td {
+            background-color: #fff;
+        }
+
+        #calendar td:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        #calendar .nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #calendar .nav a {
+            color: #000074;
+            font-size: 25px;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        #calendar .nav a:hover {
+            color: #FF5722;
+        }
+
+        #calendar .info {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        #calendar .active {
+            background-color: #200077;
+            color: white;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 <body>
- 
-  
-<script> 
-x = typeof (50 + " Квартир");
-alert (x);
-let age = prompt('Сколько тебе лет?', 100);
+<div id="parent">
+    <div id="calendar">
+        <div class="info">Янв 2020</div>
+        <table>
+            <thead>
+            <tr>
+                <th>пн</th>
+                <th>вт</th>
+                <th>ср</th>
+                <th>чт</th>
+                <th>пт</th>
+                <th>сб</th>
+                <th>вс</th>
+            </tr>
+            </thead>
+            <tbody class="body"></tbody>
+        </table>
+        <div class="nav">
+            <a href="#" class="prev">←</a>
+            <a href="#" class="next">→</a>
+        </div>
+    </div>
+</div>
+<script>
+    let calendar = document.querySelector('#calendar');
+    let body = calendar.querySelector('.body');
+    let p = document.querySelector('.info');
+    let prev = calendar.querySelector('.prev');
+    let next = calendar.querySelector('.next');
 
-alert(`Тебе ${age} лет!`); // Тебе 100 лет!
-let isBoss = confirm("Ты здесь главный?");
+    let date  = new Date();
+    let year  = date.getFullYear();
+    let month = date.getMonth() + 1;
 
-alert( isBoss ); // true, если нажата OK
+    let m = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+
+
+
+    function range(count) {
+        let array = []
+        for(let i = 1; i <= count;i++){
+            array.push(i)
+        }
+        return array;
+    }
+
+    function getLastDay(year, month) {
+        let date = new Date(year, month, 0);
+        return date.getDate();
+    }
+
+    function getFirstWeekDay(year, month) {
+        let date = new Date(year, month - 1, 1);
+        let day = date.getDay();
+        return day === 0 ? 7 : day;
+    }
+
+    function getLastWeekDay(year, month) {
+        let date = new Date(year, month, 0);
+        return date.getDay();
+    }
+
+    function normalize(arr, left, right) {
+        for(let i = 1; i < left; i++){
+            arr.unshift(" ")
+        }
+        for(let i = 1; i < right; i++){
+            arr.push(" ")
+        }
+        return arr;
+    }
+
+    function chunk(arr, n) {
+        let result = [];
+
+        for (let i = 0; i < arr.length; i += n) {
+            result.push(arr.slice(i, i + n));
+        }
+
+        return result;
+    }
+
+    function createTable(parent, arr) {
+        arr.forEach(row => {
+            let tr = document.createElement("tr");
+
+            row.forEach(cell => {
+                let td = document.createElement("td");
+                td.textContent = cell;
+                tr.appendChild(td);
+            });
+
+            parent.appendChild(tr);
+        });
+    }
+
+    function draw(body, year, month) {
+        body.innerHTML = "";
+        let arr = range(getLastDay(year, month));
+
+        let firstWeekDay = getFirstWeekDay(year, month);
+        let lastWeekDay  = getLastWeekDay(year, month);
+
+        let nums = chunk(normalize(arr, firstWeekDay, 8 - lastWeekDay), 7);
+        createTable(body, nums)
+        p.innerHTML = year + " " + m[month -1]
+    }
+
+    draw(body, year, month)
+
+    function getNextYear(year, month) {
+        return month === 11 ? year + 1 : year;
+    }
+
+    function getNextMonth(month) {
+        return month === 11 ? 0 : month + 1;
+    }
+
+    function getPrevYear(year, month) {
+        return month === 0 ? year - 1 : year;
+    }
+
+    function getPrevMonth(month) {
+        return month === 0 ? 11 : month - 1;
+    }
+
+    next.addEventListener('click', function() {
+        month = getNextMonth(month);
+        year = getNextYear(year, month);
+        draw(body, year, month);
+    });
+
+    prev.addEventListener('click', function() {
+        month = getPrevMonth(month);
+        year = getPrevYear(year, month);
+        draw(body, year, month);
+    });
 </script>
 </body>
 </html>
